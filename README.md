@@ -30,6 +30,7 @@ _Or additional field to `./frontend/package.json` before `$ yarn --cwd ./fronten
   "@vue/cli-service/portfinder": "1.0.23"
 },
 ```
+_Then `$ rm -rf ./node_modules && cd ./frontend && rm -rf ./node_modules && cd ../ && yarn install-all`_
 - Add `./frontend/vue.config.js` with code below _(React: Add `"homepage": "./"` to `./frontend/package.json`)_
 ```javascript
 module.exports = { // See also https://cli.vuejs.org/config/#vue-config-js
