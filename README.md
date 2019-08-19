@@ -23,7 +23,13 @@ To ensure your native dependencies are always matched with Electron version, sim
 
 - `$ rm -rf ./frontend`
 - `$ vue create frontend`
-- `$ cd ./frontend && yarn add portfinder@1.0.21`
+- `$ cd ./frontend && yarn add portfinder@1.0.23`
+_Or additional field to `./frontend/package.json` before `$ yarn --cwd ./frontend install`:_
+```
+"resolutions": {
+  "@vue/cli-service/portfinder": "1.0.23"
+},
+```
 - Add `./frontend/vue.config.js` with code below _(React: Add `"homepage": "./"` to `./frontend/package.json`)_
 ```javascript
 module.exports = { // See also https://cli.vuejs.org/config/#vue-config-js
@@ -39,7 +45,7 @@ module.exports = { // See also https://cli.vuejs.org/config/#vue-config-js
 - Go into the repository `$ cd electron-quick-start`
 - Install the dependencies `$ yarn install` (and run `yarn start`)
 
-**STEP 2:** Vue app could be created as `./frontend` project
+**STEP 2:** Vue app was created as `./frontend` project
 
 - Add `./frontend/vue.config.js` with code below _(React: Add `"homepage": "./"` to `./frontend/package.json`)_
 ```javascript
@@ -60,6 +66,13 @@ module.exports = { // See also https://cli.vuejs.org/config/#vue-config-js
 - Comment out everything in `preload.js`
 - Add to `./package.json` scripts: `"frontend-dev": "yarn --cwd ./frontend serve",`
 - Add to `./package.json` scripts: `"dev": "concurrently --kill-others \"yarn frontend-dev\" \"NODE_ENV=development electron .\"",`
+- _Additional field to `./frontend/package.json`_
+```
+"resolutions": {
+  "@vue/cli-service/portfinder": "1.0.23"
+},
+```
+_Then `$ rm -rf ./node_modules && cd ./frontend && rm -rf ./node_modules && cd ../ && yarn install-all`_
 - Add changes to `main.js`:
 ```javascript
 const dev = process.env.NODE_ENV === 'development';
