@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="node_modules/xterm/dist/xterm.css" />
+  <script src="node_modules/xterm/dist/xterm.js"></script>
+</head>
+<body>
+  <div id='terminal'></div>
+  <script>
+    var term = new Terminal();
+    term.open(document.getElementById('terminal'));
+
+    var Client = require('ssh2').Client;
+    var conn = new Client();
+
+    conn.connect({
+      host: 'YOUR_HOST',
+      port: 22,
+      username: 'root',
+      password: 'YOUR_PASSWD'
+    });
+
+    conn.on('ready', function() {
+      console.log('Client :: ready');
+      conn.shell(function(err, stream) {
+       if (err) throw err;
+        stream.on('close', function() {
+          console.log('Stream :: close');
+          term.write('Connection closed')
+          conn.end();
+        }).on('data', function(data) {
+          term.write(data.toString());
+        }).stderr.on('data', function(data) {
+          term.write(data.toString());
+        });
+
+        term.on('key', function(key, e) {
+          stream.write(key);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
