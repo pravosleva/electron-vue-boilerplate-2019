@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "portfinder": "1.0.21",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -26,7 +25,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "resolutions": {
-    "@vue/cli-service/portfinder": "1.0.21"
+    "@vue/cli-service/portfinder": "1.0.23"
   },
   "eslintConfig": {
     "root": true,
