@@ -1,7 +1,5 @@
 # electron-vue-boilerplate-2019
 
-## How to use
-
 ### `yarn install-all`
 Electron side deps will be installed then frontend side deps will be installed.
 
