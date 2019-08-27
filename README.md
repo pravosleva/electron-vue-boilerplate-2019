@@ -73,6 +73,7 @@ module.exports = { // See also https://cli.vuejs.org/config/#vue-config-js
   "@vue/cli-service/portfinder": "1.0.23"
 },
 ```
+_Or may be `"serve": "PORT=3000 vue-cli-service serve",`_
 _Then `$ rm -rf ./node_modules && cd ./frontend && rm -rf ./node_modules && cd ../ && yarn install-all`_
 - Add changes to `main.js`:
 ```javascript
